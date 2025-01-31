@@ -4,12 +4,15 @@ import (
     "fmt"
     "log"
     "net/http"
+    "go-ecomm/backend/handlers"
 )
 
 func main(){
-    fmt.Println("Starting Go server on :8080...")
+    fmt.Println("Starting Go server on :8000...")
 
-    http.Handle("/", http.FileServer(http.Dir("../frontend")))
+    http.HandleFunc("/api/test", handlers.TestHandler)
 
-    log.Fatal(http.ListenAndServe(":8080", nil))
+    http.Handle("/", http.FileServer(http.Dir("frontend")))
+
+    log.Fatal(http.ListenAndServe(":8000", nil))
 }
