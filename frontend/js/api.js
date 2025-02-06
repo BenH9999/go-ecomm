@@ -11,8 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify({email, password})
             });
             const result = await response.json();
+            console.log(result.username);
             if(response.ok){
-                alert(result.message);
+                alert(result.message + " (" + result.username + ")");
                 window.location.href = "/";
             }
             else{
